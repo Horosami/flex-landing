@@ -3,24 +3,36 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Flexbox</title>
+    <title>Eat Me - Cakes Time</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/media.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700" rel="stylesheet">
 </head>
 
 <body>
+    <ul class="m-menu">
+        <li class="close-menu">&times;</li>
+        <li><a href="#" class="menu-link">Home</a></li>
+        <li><a href="#" class="menu-link">Cakes Time</a></li>
+        <li><a href="#" class="menu-link">Sweets</a></li>
+        <li><a href="#" class="menu-link">Pricing</a></li>
+        <li><a href="#" class="get-started-btn menu-link">order a cake</a></li>
+    </ul>
     <div class="main">
         <div class="main-overlay"></div>
         <div class="header">
             <div class="logo">
                 <img src="img/logo.png" alt="logo">
             </div>
-            <div class="menu">
+            <a href="#" class="m-menu-link">
+                <i class="fa fa-bars"></i>
+            </a>
+            <div class="menu visible-lg">
                 <ul>
                     <li><a href="#" class="menu-link">Home</a></li>
-                    <li><a href="#" class="menu-link">Why CakesTime</a></li>
+                    <li><a href="#" class="menu-link">Cakes Time</a></li>
                     <li><a href="#" class="menu-link">Sweets</a></li>
                     <li><a href="#" class="menu-link">Pricing</a></li>
                     <li><a href="#" class="get-started-btn menu-link">order a cake</a></li>
@@ -34,12 +46,12 @@
         </div>
         <a href="#" class="main-arrow">
             <div class="arrow-down">
-                <img src="img/arrow.png" alt="down">
+                <img href="#plan" src="img/arrow.png" alt="down">  
             </div>
         </a>
     </div>
 
-    <div class="table">
+    <div class="table" id="plan">
         <div class="table-header">
             <span class="table-subtitle">Cakes Time</span>
             <h2>Select a cake</h2>
@@ -85,15 +97,14 @@
     <div class="footer-wrap">
         <div class="footer">
             <div class="logo">
-                <img src="img/logo.png" alt="logo">
+                <img src="img/logo-foo.png" alt="logo-foo">
             </div>
             <div class="footer-menu">
                 <ul>
                     <li><a href="#" class="footer-menu-link">Home</a></li>
-                    <li><a href="#" class="footer-menu-link">Why CakesTime</a></li>
+                    <li><a href="#" class="footer-menu-link">Cakes Time</a></li>
                     <li><a href="#" class="footer-menu-link">Sweets</a></li>
                     <li><a href="#" class="footer-menu-link">Pricing</a></li>
-                    <li><a href="#" class="footer-get-started footer-menu-link">order a cake</a></li>
                 </ul>
             </div>
         </div>
@@ -111,6 +122,36 @@
             <a href="#"><i class="fa fa-instagram"></i></a>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script>
+        $(function() {
+            var link = $('.m-menu-link');
+            var close = $('.close-menu');
+            var menu = $('.m-menu');
+            link.on('click', function(event) {
+                event.preventDefault();
+                menu.toggleClass('m-menu__active');
+            });
+            close.on('click', function(event) {
+                event.preventDefault();
+                menu.toggleClass('m-menu__active');
+            });
+
+
+
+            $(".arrow-down").on("click", "img", function(event) {
+                event.preventDefault();
+                var id = $(this).attr('href'),
+                    top = $(id).offset().top - 100;
+                $('body,html').animate({
+                    scrollTop: top
+                }, 1500);
+            });
+
+        });
+
+    </script>
 
 </body>
 
